@@ -1,0 +1,56 @@
+{
+  "name": "reference-object",
+  "background": "#ece9e2",
+  "camera": {
+    "fov": 35,
+    "near": 0.01,
+    "far": 100,
+    "position": [4, 3, 6],
+    "target": [0, 0.5, 0]
+  },
+  "materials": {
+    "body": {
+      "type": "physical",
+      "color": "#b75f3b",
+      "roughness": 0.48,
+      "metalness": 0.04,
+      "clearcoat": 0.12
+    },
+    "detail": {
+      "type": "standard",
+      "color": "#282722",
+      "roughness": 0.7,
+      "metalness": 0.1
+    }
+  },
+  "nodes": [
+    {
+      "name": "body",
+      "geometry": {
+        "type": "lathe",
+        "points": [[0.1, -1], [0.72, -0.8], [0.86, 0], [0.64, 0.9], [0.18, 1.1]],
+        "segments": 48
+      },
+      "material": "body",
+      "position": [0, 0, 0],
+      "castShadow": true,
+      "receiveShadow": true,
+      "children": [
+        {
+          "name": "top-detail",
+          "geometry": { "type": "torus", "radius": 0.28, "tube": 0.07, "tubularSegments": 48 },
+          "material": "detail",
+          "position": [0, 1.08, 0],
+          "rotation": [1.5707963268, 0, 0]
+        }
+      ]
+    }
+  ],
+  "lights": [
+    { "type": "hemisphere", "skyColor": "#ffffff", "groundColor": "#453c35", "intensity": 1.5 },
+    { "type": "directional", "color": "#fff1dc", "intensity": 3, "position": [3, 5, 4], "target": [0, 0.3, 0], "castShadow": true }
+  ],
+  "animations": [
+    { "type": "spin", "target": "body", "axis": "y", "speed": 0.15 }
+  ]
+}
